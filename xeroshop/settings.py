@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'shop',
     'ckeditor',
     'ckeditor_uploader',
-    'import_export',
+    #'import_export',
 ]
 
 MIDDLEWARE = [
