@@ -30,6 +30,7 @@ SECRET_KEY = '*u^3hlj6isy9l4vwal@38_9fl^lv1w28ho@-kich1kym^akx2@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['nobinshop.herokuapp.com']
 
 
@@ -43,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
+    'cart',
+
+    #Third party app
     'ckeditor',
     'ckeditor_uploader',
     'import_export',
@@ -72,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -157,3 +162,4 @@ EMAIL_HOST_PASSWORD = 'N@b1r62247'
 EMAIL_USE_TLS = True
 
 
+CART_SESSION_ID = 'cart'

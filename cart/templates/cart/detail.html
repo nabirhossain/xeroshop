@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Your shopping cart
+{% endblock %}
+
+{% block content %}
+
+
+<table class="table">
+  <thead class="bg-info">
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Product</th>
+      <th scope="col">Qyantity</th>
+      <th scope="col">Remove</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody class="table-secondary">
+  {% for item in cart %}
+        {% with product=item.product %}
+    <tr>
+      <th>
+        <a href="{{ product.get_absolute_url }}">
+          <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" style="height: 150px; width: 250px;">
+        </a>
+      </th>
+      <td>{{ product.name }}</td>
+      <td>
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {% csrf_token %}
+            {{ item.update_quantity_form.quantity }}
+            {{ item.update_quantity_form.update }}
+            <input type="submit" value="Update">
+        </form>
+      </td>
+      <td><a href="{% url 'cart:cart_remove' product.id %}">Remove</a></td>
+      <td>${{ item.price }}</td>
+      <td>${{ item.total_price }}</td>
+       {% endwith %}
+  {% endfor %}
+    </tr>
+  <tr class="bg-primary">
+    <td>Total Amount</td>
+        <td colspan="4"></td>
+        <td data-th="Subtotal" class="text-center">${{ cart.get_total_price }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<p class="text-right">
+    <a href="{% url 'shop:product_list' %}">
+      <button type="button" class="btn btn-outline-secondary">Continue shopping</button>
+    </a>
+  <a href="">
+    <button type="button" class="btn btn-outline-info">Checkout</button>
+  </a>
+  </p>
+
+
+<!--
+  <h1>Your shopping cart</h1>
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:50%">Image</th>
+        <th style="width:10%">Product</th>
+        <th style="width:10%">Quantity</th>
+        <th style="width:10%">Remove</th>
+        <th style="width:10%">Unit price</th>
+        <th style="width:10%">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart %}
+        {% with product=item.product %}
+          <tr>
+            <td data-th="Product">
+              <div class="row">
+                <div class="col-sm-2 hidden-xs">
+              <a href="{{ product.get_absolute_url }}">
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+              </a>
+                </div>
+                <div class="col-sm-10">
+                  <p>{{ product.name }}</p>
+                </div>
+              </div>
+            </td>
+            <td>{{ product.name }}</td>
+            <td data-th="Quantity">
+              <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                {% csrf_token %}
+                {{ item.update_quantity_form.quantity }}
+                {{ item.update_quantity_form.update }}
+                <input type="submit" value="Update">
+              </form>
+            </td>
+            <td><a href="{% url 'cart:cart_remove' product.id %}">Remove</a></td>
+            <td data-th="Price">${{ item.price }}</td>
+            <td data-th="Subtotal" class="text-center">${{ item.total_price }}</td>
+          </tr>
+        {% endwith %}
+      {% endfor %}
+      <tr class="total">
+        <td>Total</td>
+        <td colspan="4"></td>
+        <td data-th="Subtotal" class="text-center">${{ cart.get_total_price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="text-right">
+    <a href="" class="button light">Continue shopping</a>
+
+    <a href="" class="button">
+      Checkout
+    </a>
+  </p>
+-->
+{% endblock %}
+
+
+<!--https://bootsnipp.com/snippets/W0GDr -->
