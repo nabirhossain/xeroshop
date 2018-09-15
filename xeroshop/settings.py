@@ -30,8 +30,8 @@ SECRET_KEY = '*u^3hlj6isy9l4vwal@38_9fl^lv1w28ho@-kich1kym^akx2@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['nobinshop.herokuapp.com']
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['nobinshop.herokuapp.com']
 
 
 # Application definition
@@ -45,12 +45,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'cart',
+    'orders',
 
     #Third party app
     'ckeditor',
     'ckeditor_uploader',
     'import_export',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
