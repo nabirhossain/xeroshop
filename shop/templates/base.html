@@ -48,20 +48,18 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
           </ul>
-              {% with total_items=cart|length %}
-                {% if cart|length > 0 %}
-                  <a href="{% url 'cart:cart_detail' %}">
-                    <button class="btn btn-success btn-lg">
-                      <span class="fa fa-shopping-cart"></span> <span class="items">
-                    {{ total_items }}
-                      </span>
-                    </button>
-                  </a>
-                {% else %}
-                  0
-                {% endif %}
-              {% endwith %}
-
+              <a href="{% url 'cart:cart_detail' %}">
+                <button class="btn btn-success btn-lg">
+                {% with total_items=cart|length %}
+                  {% if cart|length > 0 %}
+                  <span class="fa fa-shopping-cart"></span>
+                  <span class="items">{{ total_items }}</span>
+                  {% else %}
+                     <span class="fa fa-shopping-cart"><span class="items"></span></span>
+                  {% endif %}
+                {% endwith %}
+                </button>
+              </a>
           <form class="form-inline my-2 my-lg-0" action="" method="GET">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ request.GET.q }}">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
