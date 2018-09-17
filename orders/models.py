@@ -6,6 +6,7 @@ class Order(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
+    mobile = models.IntegerField(null=True)
     address = models.CharField(max_length=250)
     address2 = models.CharField(max_length=250, blank=True)
     district = models.CharField(max_length=100, null=True)
