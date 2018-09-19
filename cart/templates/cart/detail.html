@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}
   Your shopping cart
 {% endblock %}
@@ -44,13 +43,49 @@
        {% endwith %}
   {% endfor %}
     </tr>
+  {% if cart.coupon %}
   <tr class="bg-primary">
-    <td>Total Amount</td>
+    <td>Sub Total</td>
         <td colspan="4"></td>
-        <td data-th="Subtotal" class="text-center">${{ cart.get_total_price }}</td>
+        <td data-th="Subtotal" class="text-center">${{ cart.get_total_price|floatformat:"2" }}</td>
+  </tr>
+  <tr class="bg-disable">
+    <td>"{{ cart.coupon.code }}" coupon ({{ cart.coupon.discount }}% off)</td>
+        <td colspan="4"></td>
+        <td data-th="Subtotal" class="text-center">
+             - ${{ cart.get_discount|floatformat:"2" }}
+        </td>
+  </tr>
+  {% endif %}
+  <tr class="bg-danger">
+    <td>Total</td>
+        <td colspan="4"></td>
+        <td data-th="Subtotal" class="text-center">
+            ${{ cart.get_total_price_after_discount|floatformat:"2" }}
+        </td>
   </tr>
   </tbody>
+
 </table>
+  <!--
+        <form class="card" action="{% url 'coupns:apply' %}" method="post">{% csrf_token %}
+            <div class="input-group">
+              <div class="input-group-append">
+                  {{ coupon_apply_form }}
+                <button type="submit" class="btn btn-secondary">Redeem</button>
+              </div>
+            </div>
+          </form>
+-->
+    <p>Apply a Coupon: </p>
+    <form action="{% url 'coupns:apply' %}" method="post">{% csrf_token %}
+        <div class="input-group">
+              <div class="input-group-append">
+                  {{ coupon_apply_form}}
+              </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Apply</button>
+    </form>
 
 <p class="text-right">
     <a href="{% url 'shop:product_list' %}">

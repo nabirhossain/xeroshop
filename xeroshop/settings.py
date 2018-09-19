@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'coupns',
 
     #Third party app
     'ckeditor',

@@ -26,29 +26,21 @@
               <div>
                 <h6 class="my-0">{{ item.product.name }}</h6>
               </div>
-              <span class="text-muted">{{ item.quantity }}</span>
+              <span class="text-muted">${{ item.total_price }}</span>
             </li>
             {% endfor %}
             <li class="list-group-item d-flex justify-content-between bg-light">
               <div class="text-success">
-                <h6 class="my-0">Promo code</h6>
-                <small>EXAMPLECODE</small>
+                <h6 class="my-0">Promo code discount</h6>
+                <small>({{ cart.coupon.discount }}% off)</small>
               </div>
-              <span class="text-success">-$5</span>
+              <span class="text-success">-${{ cart.get_discount|floatformat:"2" }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between">
               <span>Total (USD)</span>
-              <strong>$ {{ cart.get_total_price }} </strong>
+              <strong>${{ cart.get_total_price_after_discount|floatformat:"2" }} </strong>
             </li>
           </ul>
-          <form class="card p-2">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code">
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-secondary">Redeem</button>
-              </div>
-            </div>
-          </form>
         </div>
 
   <!-- ============================================================================================== -->
