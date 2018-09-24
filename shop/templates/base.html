@@ -16,6 +16,15 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--
+    <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style10.css' %}" />
+    -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/1.css' %}" />
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
+    <!-- Leroy Zoom -------->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.leroy-zoom.min.css' %}">
 
     {% block stylesheet %}
 
@@ -139,6 +148,20 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+   <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>   -->
+    <!-- Leroy Zoom -------->
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.leroy-zoom.min.js' %}"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+        $("#demo-trigger").leroyZoom({
+            zoomTop: 80, // Zoom frame distance from top in pixels
+            zoomLeft: 560 // Zoom frame distance from left in pixels
+        });
+    });
+</script>
+
     {% block script %}
 
     {% endblock %}
