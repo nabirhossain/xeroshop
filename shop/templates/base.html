@@ -84,7 +84,7 @@
       {% endblock %}
     </div>
     <!-- /.container -->
-
+{% include 'subscribe.html' %}
     <footer class="py-5 bg-dark">
     <div class="container">
       <div class="row">
@@ -149,8 +149,8 @@
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>   -->
-    <!-- Leroy Zoom -------->
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <!-- Leroy Zoom http://code.jquery.com/jquery-latest.min.js -------->
+    <script src="{% static 'vendor/jquery/jquery-latest.min.js' %}" type="text/javascript"></script>
     <script type="text/javascript" src="{% static 'js/jquery.leroy-zoom.min.js' %}"></script>
 
 <script type="text/javascript">
