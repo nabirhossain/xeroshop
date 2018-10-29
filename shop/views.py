@@ -50,10 +50,5 @@ def product_detail(request, id, slug):
 
 
 
-
-
-
-
-
-
-
+#REST FRAMEWORK TUTORIAL
+#https://www.andreagrandi.it/2016/09/28/creating-production-ready-api-python-django-rest-framework-part-1/

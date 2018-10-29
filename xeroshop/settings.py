@@ -30,8 +30,8 @@ SECRET_KEY = '*u^3hlj6isy9l4vwal@38_9fl^lv1w28ho@-kich1kym^akx2@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['nobinshop.herokuapp.com']
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['nobinshop.herokuapp.com']
 
 
 # Application definition
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'coupns',
-    'newsletter',
+    'newsletters',
 
     #Third party app
     'ckeditor',
@@ -72,7 +72,7 @@ CELERY_TIMEZONE = 'Asia/Dhaka'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',                           #heroku whitenose setting
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

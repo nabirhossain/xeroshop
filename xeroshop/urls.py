@@ -20,12 +20,12 @@ from django.conf.urls.static import static
 app_name='shop'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('newsletter/',include('newsletter.urls' , namespace='newsletter')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
     path('coupns/', include('coupns.urls', namespace='coupns')),
     path('',include('shop.urls', namespace="shop")),
     path('ckeditor/',include('ckeditor_uploader.urls')),
+    path('newsletter/',include('newsletters.urls')),
 
 ]
 if settings.DEBUG:

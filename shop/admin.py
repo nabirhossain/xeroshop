@@ -4,9 +4,10 @@ from import_export.admin import ImportExportModelAdmin
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(ImportExportModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
+    pass
 
 """
 @admin.register(Product)
@@ -25,4 +26,5 @@ class ProductAdmin(ImportExportModelAdmin):
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
     pass
+
 
